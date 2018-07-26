@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    name: weblb
+  name: weblb
+spec:
+  ports:
+    - port: 80
+ selector:
+   app: webfront
+type: LoadBalancer

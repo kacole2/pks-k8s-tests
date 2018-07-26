@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    app: nginx-harbor
+  name: nginx-harbor
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx-harbor
+    spec:
+      containers:
+        - name: nginx-harbor
+          image: harbor.corp.local/myimages/nginx:V1
+          ports:
+            - containerPort: 80
+              name: http
