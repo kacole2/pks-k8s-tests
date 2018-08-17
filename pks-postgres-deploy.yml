@@ -12,26 +12,27 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: postgres
+  labels:
+    name: postgres
 spec:
+  replicas: 1
   template:
     metadata:
       labels:
         app: postgres
     spec:
       containers:
-        - image: "postgres"
-          name: postgres
+        - name: postgres
+          image: postgres:9.6
           env:
-            - name: POSTGRES_USER
-              value: admin
             - name: POSTGRES_PASSWORD
               value: VMware1!
           ports:
             - containerPort: 5432
-              name: postgres
+              name: postgres-storage
           volumeMounts:
-            - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-storage
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
