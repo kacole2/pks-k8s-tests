@@ -29,7 +29,7 @@ spec:
               value: VMware1!
           ports:
             - containerPort: 5432
-              name: postgres-storage
+              name: postgres
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: pg-storage
