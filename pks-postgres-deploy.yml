@@ -32,8 +32,8 @@ spec:
               name: postgres-storage
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
-              name: postgres-storage
+              name: pg-storage
       volumes:
-        - name: postgres-storage
+        - name: pg-storage
           persistentVolumeClaim:
             claimName: thin-claim
